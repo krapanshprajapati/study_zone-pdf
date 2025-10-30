@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>लॉगिन - Study Zone</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .auth-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+        }
+
+        .auth-tab.active {
+            border-bottom-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Study Zone</h3>
+            <p>Loading authentication...</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="auth-container">
+            <h1 style="text-align: center; color: white;">Study Zone</h1>
+            <p style="text-align: center; color: white;">अपने अकाउंट में लॉगिन करें</p>
+        </div>
+    </header>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-tabs">
+                <div class="auth-tab active" onclick="showAuthForm('login')">लॉगिन</div>
+                <div class="auth-tab" onclick="showAuthForm('register')">रजिस्टर</div>
+            </div>
+
+            <!-- लॉगिन फॉर्म -->
+            <form id="loginForm" class="auth-form active">
+                <div class="form-group">
+                    <label>ईमेल</label>
+                    <input type="email" id="loginEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>पासवर्ड</label>
+                    <input type="password" id="loginPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="pay-now-btn" style="width: 100%;">
+                    <i class="fas fa-sign-in-alt"></i> लॉगिन करें
+                </button>
+                <div style="text-align: center; margin-top: 15px;">
+                    <a href="#" style="color: var(--primary);">पासवर्ड भूल गए?</a>
+                </div>
+            </form>
+
+            <!-- रजिस्ट्रेशन फॉर्म -->
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label>पूरा नाम</label>
+                    <input type="text" id="registerName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>ईमेल</label>
+                    <input type="email" id="registerEmail" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>पासवर्ड</label>
+                    <input type="password" id="registerPassword" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>पासवर्ड कन्फर्म करें</label>
+                    <input type="password" id="registerConfirmPassword" class="form-control" required>
+                </div>
+                <button type="submit" class="pay-now-btn" style="width: 100%;">
+                    <i class="fas fa-user-plus"></i> अकाउंट बनाएं
+                </button>
+            </form>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="index.html" style="color: var(--primary);">
+                <i class="fas fa-arrow-left"></i> होमपेज पर वापस जाएं
+            </a>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="auth-ui.js"></script>
+</body>
+</html>

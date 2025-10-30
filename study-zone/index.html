@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Zone - Exam Wise Complete Notes</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <h3>Study Zone</h3>
+            <p>Loading your exam preparation partner...</p>
+        </div>
+    </div>
+
+    <header>
+        <h1>Study Zone - Exam Wise Complete Notes</h1>
+        <p>SSC | Railway | MP State Exams | Banking | All Government Exams</p>
+        <div class="header-badge">
+            <i class="fas fa-star"></i> Exam-Wise Complete Packages | <i class="fas fa-download"></i> Instant Download
+        </div>
+        <div class="developer-credit">
+            Developed by <a href="#">Kripansh Prajapati</a> | 
+            <a href="tel:+917869952173">+91 7869952173</a> | 
+            <a href="mailto:kripanshofficial@gmail.com">kripanshofficial@gmail.com</a>
+        </div>
+        
+        <!-- User Menu -->
+        <div class="user-menu-container">
+            <button id="loginBtn" class="user-menu-btn" onclick="window.location.href='login.html'">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+            <div id="userMenu" class="user-menu" style="display: none;">
+                <span id="userName" class="user-name"></span>
+                <div class="user-dropdown">
+                    <a href="user-dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="#" onclick="auth.logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#ssc" class="active"><i class="fas fa-graduation-cap"></i> SSC Exams</a>
+        <a href="#railway"><i class="fas fa-train"></i> Railway</a>
+        <a href="#mp-exams"><i class="fas fa-landmark"></i> MP Exams</a>
+        <a href="#banking"><i class="fas fa-university"></i> Banking</a>
+        <a href="#other-exams"><i class="fas fa-book"></i> Other Exams</a>
+    </nav>
+
+    <div class="search-container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by exam name: SSC CGL, Railway NTPC, MP Police...">
+            <button id="searchButton"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+    <!-- Search Results Section -->
+    <div id="searchResults" class="search-results hidden">
+        <h3>Search Results</h3>
+        <div class="folders" id="searchResultsContainer"></div>
+    </div>
+
+    <div class="container">
+        <!-- SPECIAL OFFER BANNER -->
+        <div class="special-offer">
+            <div class="offer-content">
+                <i class="fas fa-gift"></i>
+                <div class="offer-text">
+                    <h3>Special Discount Offer!</h3>
+                    <p>Use coupon code <strong>WELCOME20</strong> to get 20% off on any exam package</p>
+                </div>
+                <button class="offer-btn" onclick="scrollToCoupon()">Apply Coupon</button>
+            </div>
+        </div>
+
+        <!-- QUICK EXAM GUIDE -->
+        <div class="exam-guide">
+            <h3><i class="fas fa-compass"></i> Quick Exam Guide</h3>
+            <div class="guide-grid">
+                <div class="guide-item" onclick="filterByExam('ssc')">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>SSC Exams</span>
+                </div>
+                <div class="guide-item" onclick="filterByExam('railway')">
+                    <i class="fas fa-train"></i>
+                    <span>Railway</span>
+                </div>
+                <div class="guide-item" onclick="filterByExam('mp police')">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>MP Police</span>
+                </div>
+                <div class="guide-item" onclick="filterByExam('banking')">
+                    <i class="fas fa-university"></i>
+                    <span>Banking</span>
+                </div>
+                <div class="guide-item" onclick="filterByExam('teaching')">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Teaching</span>
+                </div>
+                <div class="guide-item" onclick="showAllExams()">
+                    <i class="fas fa-th-list"></i>
+                    <span>View All</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SSC EXAMS SECTION -->
+        <section id="ssc">
+            <div class="section-title"><h2><i class="fas fa-graduation-cap"></i> SSC Exams</h2></div>
+            <div class="exam-category">
+                <h3>SSC (Staff Selection Commission)</h3>
+                <p>Complete notes for all SSC exams - CGL, CHSL, MTS, GD, and more</p>
+            </div>
+            <div class="folders">
+                <div class="folder" data-title="SSC CGL Complete Pack" data-desc="Math, Reasoning, English, GK - All subjects for SSC CGL Tier 1 & 2" data-tags="ssc cgl tier1 tier2 complete math reasoning english gk">
+                    <div class="exam-badge">SSC CGL</div>
+                    <div class="folder-icon"><i class="fas fa-crown"></i></div>
+                    <h3>SSC CGL Complete Pack</h3>
+                    <p>Math, Reasoning, English, GK - All subjects for Tier 1 & 2</p>
+                    <div class="exam-tags">
+                        <span>SSC CGL</span><span>Tier 1</span><span>Tier 2</span><span>Complete</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹599</span> ₹399</div>
+                    <button onclick="redirectToPayment('SSC CGL Complete Pack', 399)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="SSC CHSL Complete" data-desc="Tier 1 preparation with quick math tricks and reasoning shortcuts" data-tags="ssc chsl tier1 ldc deo postal assistant">
+                    <div class="exam-badge">SSC CHSL</div>
+                    <div class="folder-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>SSC CHSL Complete</h3>
+                    <p>Tier 1 preparation with quick math tricks and reasoning shortcuts</p>
+                    <div class="exam-tags">
+                        <span>SSC CHSL</span><span>Tier 1</span><span>LDC/DEO</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹449</span> ₹299</div>
+                    <button onclick="redirectToPayment('SSC CHSL Complete', 299)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="SSC MTS & GD Pack" data-desc="General awareness and basic knowledge for SSC MTS and GD exams" data-tags="ssc mts gd constable general awareness">
+                    <div class="exam-badge">SSC MTS/GD</div>
+                    <div class="folder-icon"><i class="fas fa-users"></i></div>
+                    <h3>SSC MTS & GD Pack</h3>
+                    <p>General awareness and basic knowledge for MTS and GD exams</p>
+                    <div class="exam-tags">
+                        <span>SSC MTS</span><span>SSC GD</span><span>General Awareness</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹399</span> ₹249</div>
+                    <button onclick="redirectToPayment('SSC MTS & GD Pack', 249)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="SSC English Special" data-desc="Grammar, vocabulary, comprehension for all SSC exams" data-tags="ssc english grammar vocabulary comprehension">
+                    <div class="exam-badge">SSC English</div>
+                    <div class="folder-icon"><i class="fas fa-language"></i></div>
+                    <h3>SSC English Special</h3>
+                    <p>Grammar, vocabulary, comprehension for all SSC exams</p>
+                    <div class="exam-tags">
+                        <span>SSC All</span><span>English</span><span>Grammar</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹299</span> ₹199</div>
+                    <button onclick="redirectToPayment('SSC English Special', 199)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RAILWAY EXAMS SECTION -->
+        <section id="railway">
+            <div class="section-title"><h2><i class="fas fa-train"></i> Railway Exams</h2></div>
+            <div class="exam-category">
+                <h3>Indian Railway Recruitment Board (RRB)</h3>
+                <p>Complete notes for RRB NTPC, Group D, ALP, JE, and other railway exams</p>
+            </div>
+            <div class="folders">
+                <div class="folder" data-title="RRB NTPC Complete" data-desc="CBT 1 & 2 preparation with practice questions and shortcuts" data-tags="rrb ntpc cbt1 cbt2 railway math reasoning">
+                    <div class="exam-badge">RRB NTPC</div>
+                    <div class="folder-icon"><i class="fas fa-train"></i></div>
+                    <h3>RRB NTPC Complete</h3>
+                    <p>CBT 1 & 2 preparation with practice questions and shortcuts</p>
+                    <div class="exam-tags">
+                        <span>RRB NTPC</span><span>CBT 1</span><span>CBT 2</span><span>Complete</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹549</span> ₹349</div>
+                    <button onclick="redirectToPayment('RRB NTPC Complete', 349)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="RRB Group D Complete" data-desc="Science, math, reasoning for Group D CBT and PET" data-tags="rrb groupd railway science math reasoning">
+                    <div class="exam-badge">RRB Group D</div>
+                    <div class="folder-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3>RRB Group D Complete</h3>
+                    <p>Science, math, reasoning for Group D CBT and PET</p>
+                    <div class="exam-tags">
+                        <span>RRB Group D</span><span>Science</span><span>Math</span><span>Reasoning</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹499</span> ₹299</div>
+                    <button onclick="redirectToPayment('RRB Group D Complete', 299)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="Railway ALP & Technician" data-desc="Technical knowledge and general awareness for ALP posts" data-tags="railway alp technician technical general awareness">
+                    <div class="exam-badge">ALP/Tech</div>
+                    <div class="folder-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Railway ALP & Technician</h3>
+                    <p>Technical knowledge and general awareness for ALP posts</p>
+                    <div class="exam-tags">
+                        <span>Railway ALP</span><span>Technician</span><span>Technical</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹449</span> ₹279</div>
+                    <button onclick="redirectToPayment('Railway ALP & Technician', 279)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="RPF SI & Constable" data-desc="General awareness and arithmetic for RPF recruitment" data-tags="rpf si constable railway police general awareness">
+                    <div class="exam-badge">RPF</div>
+                    <div class="folder-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>RPF SI & Constable</h3>
+                    <p>General awareness and arithmetic for RPF recruitment</p>
+                    <div class="exam-tags">
+                        <span>RPF SI</span><span>RPF Constable</span><span>Railway Police</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹399</span> ₹249</div>
+                    <button onclick="redirectToPayment('RPF SI & Constable', 249)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- MP STATE EXAMS SECTION -->
+        <section id="mp-exams">
+            <div class="section-title"><h2><i class="fas fa-landmark"></i> MP State Exams</h2></div>
+            <div class="exam-category">
+                <h3>Madhya Pradesh Professional Examination Board (MPPEB/VYAPAM)</h3>
+                <p>Complete notes for all MP state government exams - Police, Teacher, Clerk, and more</p>
+            </div>
+            <div class="folders">
+                <div class="folder" data-title="MP Police Constable Complete" data-desc="General knowledge, reasoning, math for MP Police constable exam" data-tags="mp police constable mpesb vyapam general knowledge reasoning">
+                    <div class="exam-badge">MP Police</div>
+                    <div class="folder-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>MP Police Constable Complete</h3>
+                    <p>General knowledge, reasoning, math for MP Police constable exam</p>
+                    <div class="exam-tags">
+                        <span>MP Police</span><span>Constable</span><span>MPESB</span><span>Complete</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹499</span> ₹299</div>
+                    <button onclick="redirectToPayment('MP Police Constable Complete', 299)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="MP High Court & Group 2" data-desc="General studies and law knowledge for MP High Court exams" data-tags="mp high court group2 clerk general studies law">
+                    <div class="exam-badge">MP High Court</div>
+                    <div class="folder-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>MP High Court & Group 2</h3>
+                    <p>General studies and law knowledge for MP High Court exams</p>
+                    <div class="exam-tags">
+                        <span>MP High Court</span><span>Group 2</span><span>Clerk</span><span>Law</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹449</span> ₹279</div>
+                    <button onclick="redirectToPayment('MP High Court & Group 2', 279)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="MP Teacher Eligibility" data-desc="Child development, teaching methods, and subject knowledge" data-tags="mp teacher tet shikshak kendra child development">
+                    <div class="exam-badge">MP Teacher</div>
+                    <div class="folder-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                    <h3>MP Teacher Eligibility</h3>
+                    <p>Child development, teaching methods, and subject knowledge</p>
+                    <div class="exam-tags">
+                        <span>MP Teacher</span><span>TET</span><span>Shikshak</span><span>Education</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹399</span> ₹249</div>
+                    <button onclick="redirectToPayment('MP Teacher Eligibility', 249)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="MP Patwari & Revenue" data-desc="Revenue laws, agriculture, and general knowledge for Patwari exam" data-tags="mp patwari revenue inspector agriculture laws">
+                    <div class="exam-badge">MP Patwari</div>
+                    <div class="folder-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>MP Patwari & Revenue</h3>
+                    <p>Revenue laws, agriculture, and general knowledge for Patwari exam</p>
+                    <div class="exam-tags">
+                        <span>MP Patwari</span><span>Revenue</span><span>Agriculture</span><span>Laws</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹449</span> ₹279</div>
+                    <button onclick="redirectToPayment('MP Patwari & Revenue', 279)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANKING EXAMS SECTION -->
+        <section id="banking">
+            <div class="section-title"><h2><i class="fas fa-university"></i> Banking Exams</h2></div>
+            <div class="exam-category">
+                <h3>Banking & Insurance Sector Exams</h3>
+                <p>Complete preparation for IBPS, SBI, RBI, and other banking exams</p>
+            </div>
+            <div class="folders">
+                <div class="folder" data-title="IBPS PO Complete Pack" data-desc="Quant, reasoning, English, general awareness for IBPS PO" data-tags="ibps po clerk banking quant reasoning english">
+                    <div class="exam-badge">IBPS PO</div>
+                    <div class="folder-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>IBPS PO Complete Pack</h3>
+                    <p>Quant, reasoning, English, general awareness for IBPS PO</p>
+                    <div class="exam-tags">
+                        <span>IBPS PO</span><span>Banking</span><span>Complete</span><span>All Subjects</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹599</span> ₹399</div>
+                    <button onclick="redirectToPayment('IBPS PO Complete Pack', 399)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="SBI Clerk & PO" data-desc="Prelims and mains preparation for SBI exams" data-tags="sbi po clerk banking prelims mains">
+                    <div class="exam-badge">SBI</div>
+                    <div class="folder-icon"><i class="fas fa-piggy-bank"></i></div>
+                    <h3>SBI Clerk & PO</h3>
+                    <p>Prelims and mains preparation for SBI exams</p>
+                    <div class="exam-tags">
+                        <span>SBI PO</span><span>SBI Clerk</span><span>Prelims</span><span>Mains</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹549</span> ₹349</div>
+                    <button onclick="redirectToPayment('SBI Clerk & PO', 349)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- OTHER EXAMS SECTION -->
+        <section id="other-exams">
+            <div class="section-title"><h2><i class="fas fa-book"></i> Other Competitive Exams</h2></div>
+            <div class="exam-category">
+                <h3>Other Government & Competitive Exams</h3>
+                <p>Notes for UPSC, Defense, Teaching, and other competitive exams</p>
+            </div>
+            <div class="folders">
+                <div class="folder" data-title="UPSC Prelims GS Paper 1" data-desc="History, geography, polity, economy for UPSC prelims" data-tags="upsc prelims gs paper1 history geography polity">
+                    <div class="exam-badge">UPSC</div>
+                    <div class="folder-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>UPSC Prelims GS Paper 1</h3>
+                    <p>History, geography, polity, economy for UPSC prelims</p>
+                    <div class="exam-tags">
+                        <span>UPSC</span><span>Prelims</span><span>GS Paper 1</span><span>Civil Services</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹699</span> ₹499</div>
+                    <button onclick="redirectToPayment('UPSC Prelims GS Paper 1', 499)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+
+                <div class="folder" data-title="CTET & Teaching Exams" data-desc="Child development, pedagogy, and subject knowledge for CTET" data-tags="ctet teaching tet child development pedagogy">
+                    <div class="exam-badge">CTET/TET</div>
+                    <div class="folder-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>CTET & Teaching Exams</h3>
+                    <p>Child development, pedagogy, and subject knowledge for CTET</p>
+                    <div class="exam-tags">
+                        <span>CTET</span><span>Teaching</span><span>TET</span><span>Education</span>
+                    </div>
+                    <div class="price"><span class="old-price">₹449</span> ₹299</div>
+                    <button onclick="redirectToPayment('CTET & Teaching Exams', 299)"><i class="fas fa-shopping-cart"></i> Buy Now</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section class="testimonials">
+            <div class="section-title"><h2><i class="fas fa-comment-dots"></i> Student Success Stories</h2></div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"SSC CGL complete pack helped me clear Tier 1 in first attempt. The math shortcuts saved me 20 minutes in exam!"</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info"><h4>Rahul Verma</h4><p>SSC CGL Selected</p></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"MP Police notes were exactly what I needed. General knowledge section covered all current MP topics perfectly."</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">P</div>
+                        <div class="author-info"><h4>Priya Singh</h4><p>MP Police Constable</p></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"Railway NTPC package had everything - from basic concepts to advanced tricks. Cleared CBT 1 & 2 easily."</div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info"><h4>Ankit Joshi</h4><p>RRB NTPC Selected</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUICK STATS -->
+        <section class="stats">
+            <div class="stat-card"><div class="stat-number">5000+</div><div class="stat-text">Happy Students</div></div>
+            <div class="stat-card"><div class="stat-number">50+</div><div class="stat-text">Exam Categories</div></div>
+            <div class="stat-card"><div class="stat-number">24/7</div><div class="stat-text">Support Available</div></div>
+            <div class="stat-card"><div class="stat-number">98%</div><div class="stat-text">Success Rate</div></div>
+        </section>
+
+        <!-- FEATURES SECTION -->
+        <section class="features" style="margin-top: 60px;">
+            <div class="section-title"><h2><i class="fas fa-star"></i> Why Choose Study Zone?</h2></div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-file-pdf"></i></div>
+                <h3>Exam-Wise Packages</h3>
+                <p>Complete notes tailored for specific exams - no extra material</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h3>Mobile Friendly</h3>
+                <p>Access your notes anytime, anywhere on any device</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                <h3>Regular Updates</h3>
+                <p>Content updated as per latest exam patterns and syllabus</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                <h3>24/7 Support</h3>
+                <p>Get help with any issues related to notes or payments</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Study Zone</h3>
+                <p>Your trusted partner for competitive exam preparation. We provide exam-wise complete packages that help students achieve their goals.</p>
+                <div class="developer-credit" style="color: white; margin-top: 15px;">
+                    Developed by <a href="#" style="color: #ff416c;">Kripansh Prajapati</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Exam Categories</h3>
+                <ul class="footer-links">
+                    <li><a href="#ssc"><i class="fas fa-chevron-right"></i> SSC Exams</a></li>
+                    <li><a href="#railway"><i class="fas fa-chevron-right"></i> Railway Exams</a></li>
+                    <li><a href="#mp-exams"><i class="fas fa-chevron-right"></i> MP State Exams</a></li>
+                    <li><a href="#banking"><i class="fas fa-chevron-right"></i> Banking Exams</a></li>
+                    <li><a href="#other-exams"><i class="fas fa-chevron-right"></i> Other Exams</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Payment Issues</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Download Issues</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Refund Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:kripanshofficial@gmail.com"><i class="fas fa-envelope"></i> kripanshofficial@gmail.com</a></li>
+                    <li><a href="tel:+917869952173"><i class="fas fa-phone"></i> +91 7869952173</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Katni, Madhya Pradesh</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Study Zone - Competitive Exam Portal | सभी अधिकार सुरक्षित</p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="floating-btn" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Floating Contact Buttons -->
+    <div class="floating-contact-buttons">
+        <div class="contact-btn whatsapp" onclick="openWhatsApp()" title="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="contact-btn phone" onclick="contactSupport()" title="Call Support">
+            <i class="fas fa-phone"></i>
+        </div>
+        <div class="contact-btn email" onclick="emailSupport()" title="Email Support">
+            <i class="fas fa-envelope"></i>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
